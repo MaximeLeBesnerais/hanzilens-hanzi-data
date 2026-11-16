@@ -11,8 +11,9 @@ stroke graphics, and the **LGPL-3.0-or-later** for the character dictionary.
 |------|------|----------|---------|
 | `strokes.bin` | 9,574 characters | [Make Me a Hanzi](https://github.com/skishore/makemeahanzi) `graphics.txt` | Arphic Public License |
 | `components.bin` | 9,574 characters | [Make Me a Hanzi](https://github.com/skishore/makemeahanzi) `dictionary.txt` | LGPL-3.0-or-later |
+| `cedict.db.gz` | 124,161 entries | [CC-CEDICT](https://cc-cedict.org/) text export | CC BY-SA 4.0 |
 
-Both files are **format conversions only**. No glyph geometry, stroke order,
+All files are **format conversions only**. No glyph geometry, stroke order,
 median point, radical, decomposition or etymology field was altered. See
 [PROVENANCE.md](./PROVENANCE.md) for the exact transformation.
 
@@ -39,12 +40,25 @@ character \t radical \t decomposition \t semantic \t phonetic \t etymology_hint
 
 (the remaining columns are empty padding retained from the original converter).
 
+### `cedict.db.gz` — gzipped SQLite
+
+```
+table entries(id, simplified, traditional, pinyin, freq_score, gloss)
+table meta(key TEXT, value TEXT)   -- conversion provenance notice
+```
+
+CC-CEDICT is a Chinese–English dictionary. The conversion keeps every entry and
+field; only the container changed.
+
 ## Licenses
 
 - `licenses/ARPHICPL.txt` — Arphic Public License, retained unaltered as required
   by section 1 of that license.
 - The `dictionary.txt`-derived data is GNU LGPL v3 or later; the Unihan and
   CJKlib copyright notices apply to it.
+- `cedict.db.gz` is licensed **CC BY-SA 4.0**. The dictionary content remains
+  available under that license and this conversion is released under the same
+  terms. Attribution: CC-CEDICT project, https://cc-cedict.org/
 
 ## Attribution
 

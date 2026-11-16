@@ -31,6 +31,18 @@ you changed that file."*
 - **Data altered:** none. A field-by-field comparison against upstream
   `dictionary.txt` confirmed 9,574/9,574 rows identical and 0 field mismatches.
 
+## `cedict.db.gz`
+
+- **Upstream:** CC-CEDICT text export, https://cc-cedict.org/
+- **License:** Creative Commons Attribution-ShareAlike 4.0 International
+- **When:** converted 2025-11-15, provenance table added 2026-11-16
+- **How:** text export → gzipped SQLite. One `entries` row per dictionary entry
+  with `simplified`, `traditional`, `pinyin`, `freq_score` and `gloss`. A `meta`
+  table carries this notice.
+- **Data altered:** none. 124,161 entries retained.
+- **ShareAlike:** this converted database is distributed under CC BY-SA 4.0,
+  the same license as the source.
+
 ## Verification
 
 The comparison was performed by parsing both the upstream JSON and the
